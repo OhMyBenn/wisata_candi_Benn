@@ -40,14 +40,14 @@ class DetailScreen extends StatelessWidget {
                     onPressed: () {},
                       icon: const Icon(
                       Icons.arrow_back,
-                      ),
                     ),
                   ),
-                ), 
-              ],
-            ),
-          ],
-        ),
-      );
+                ),
+              ), 
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
