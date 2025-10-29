@@ -126,11 +126,15 @@ class DetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Divider(color: Colors.deepPurple.shade100,),
-                Text(''),
+                Text('Galeri', style: TextStyle(
+                  fontSize: 16, fontWeight: FontWeight.bold,
+                ),),
                 SizedBox(height: 10),
                 SizedBox(),
                 SizedBox(height: 4),
-                Text(''),
+                Text('Tap untuk memperbesar', style: TextStyle(
+                  fontSize: 12, color: Colors.black54,
+                ),),
               ],
             ),
           ),
