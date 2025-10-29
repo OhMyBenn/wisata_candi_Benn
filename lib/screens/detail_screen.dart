@@ -118,7 +118,22 @@ class DetailScreen extends StatelessWidget {
                 Text('${candi.description}'),
               ],
             ),
-          )
+          ),
+          // Detail Gallery
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Divider(color: Colors.deepPurple.shade100,),
+                Text(''),
+                SizedBox(height: 10),
+                SizedBox(),
+                SizedBox(height: 4),
+                Text(''),
+              ],
+            ),
+          ),
         ],
       ),
     );
