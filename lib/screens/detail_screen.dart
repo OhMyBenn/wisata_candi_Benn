@@ -11,7 +11,8 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         children: [
           // Detail Header
           Stack(
@@ -52,16 +53,11 @@ class DetailScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 16),
                 // Info atas (nama candi dan tombol favorit)
-                Row(
-                  children: [
-                    Text(candi.name),
-                    IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border))
-                  ],
-                ),
-                // Info atas (nama candi dan tombol favorit)
+                
                 Row(  
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -157,7 +153,8 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
           ),
-        ],
+          ],
+        ),
       ),
     );
   }
