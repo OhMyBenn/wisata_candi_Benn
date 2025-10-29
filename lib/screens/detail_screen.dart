@@ -138,8 +138,11 @@ class DetailScreen extends StatelessWidget {
                         onTap: () {},
                         child: Container(
                           decoration: BoxDecoration(),
-                          child: CachedNetworkImage(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: CachedNetworkImage(
                             imageUrl: candi.imageUrls[index]),
+                            ),
                           ),
                         ),
                       );
@@ -149,10 +152,11 @@ class DetailScreen extends StatelessWidget {
                 SizedBox(height: 4),
                 Text('Tap untuk memperbesar', style: TextStyle(
                   fontSize: 12, color: Colors.black54,
-                ),),
-              ],
+                  ),
+                  ),
+                ],
+              ),
             ),
-          ),
           ],
         ),
       ),
