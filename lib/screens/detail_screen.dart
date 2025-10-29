@@ -144,8 +144,9 @@ class DetailScreen extends StatelessWidget {
                           decoration: BoxDecoration(),
                           child: CachedNetworkImage(
                             imageUrl: candi.imageUrls[index]),
+                          ),
                         ),
-                      ),);
+                      );
                     },
                   ),
                 ),
