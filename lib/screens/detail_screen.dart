@@ -57,7 +57,6 @@ class DetailScreen extends StatelessWidget {
               children: [
                 SizedBox(height: 16),
                 // Info atas (nama candi dan tombol favorit)
-                
                 Row(  
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -141,7 +140,17 @@ class DetailScreen extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: CachedNetworkImage(
-                            imageUrl: candi.imageUrls[index]),
+                            imageUrl: candi.imageUrls[index],
+                            width: 120,
+                            height: 120,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Container(
+                              width: 120,
+                              height: 120,
+                              color: Colors.deepPurple[50],
+                            ),
+                            errorWidget: (context, url, error) => Icon(Icons.error),
+                              ),
                             ),
                           ),
                         ),
