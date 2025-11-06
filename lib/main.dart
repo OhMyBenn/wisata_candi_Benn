@@ -75,78 +75,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(height: 20),
                 Divider(color: Colors.deepPurple[100]),
                 SizedBox(height: 4),
-                Row(
-                  children: [
-                    SizedBox(width: MediaQuery.of(context).size.width / 3,
-                      child: Row(
-                        children: [
-                          Icon(Icons.lock, color: Colors.amber),
-                          SizedBox(width: 8),
-                          Text('Pengguna', style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(': $username', style: TextStyle(
-                        fontSize: 18
-                        ),
-                      ),
-                    ),
-                    if(isSignedIn) Icon(Icons.edit),
-                  ],
+                ProfileInfoItem(
+                  icon: Icons.lock, 
+                  label: 'Pengguna', 
+                  value: username, 
+                  iconColor: Colors.amber,
                 ),
                 SizedBox(height: 4),
                 Divider(color: Colors.deepPurple[100]),
                 SizedBox(height: 4),
-                Row(
-                  children: [
-                    SizedBox(width: MediaQuery.of(context).size.width / 3,
-                      child: Row(
-                        children: [
-                          Icon(Icons.person, color: Colors.blue),
-                          SizedBox(width: 8),
-                          Text('Nama', style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(': $fullName', style: TextStyle(
-                        fontSize: 18
-                        ),
-                      ),
-                    ),
-                  ],
+                ProfileInfoItem(
+                  icon: Icons.person, 
+                  label: 'Nama', 
+                  value: fullName,
+                  showEditIcon: isSignedIn,
+                  onEditPressed: () {
+                    // Tindakan saat ikon edit ditekan, misalnya: pengeditan nama
+                    debugPrint('Icon edit ditekan ...');
+                    }, 
+                  iconColor: Colors.blue
                 ),
                 SizedBox(height: 4),
                 Divider(color: Colors.deepPurple[100]),
                 SizedBox(height: 4),
-                Row(
-                  children: [
-                    SizedBox(width: MediaQuery.of(context).size.width / 3,
-                      child: Row(
-                        children: [
-                          Icon(Icons.favorite, color: Colors.red),
-                          SizedBox(width: 8),
-                          Text('Favorit', style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(': $favoriteCandiCount ', style: TextStyle(
-                        fontSize: 18
-                        ),
-                      ),
-                    ),
-                  ],
+                ProfileInfoItem(
+                  icon: Icons.favorite, 
+                  label: 'Favorit', 
+                  value: favoriteCandiCount > 0 ? '$favoriteCandiCount' : '', 
+                  iconColor: Colors.red
                 ),
                 // TODO: 4 Buat ProfileActions yang berisi TextButton sign in/sign out
                 SizedBox(height: 4),
@@ -179,6 +135,49 @@ class MyApp extends StatelessWidget {
         useMaterial3: true
       ),
       home: ProfileScreen(),
+    );
+  }
+}
+
+class ProfileInfoItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+  final bool showEditIcon;
+  final VoidCallback? onEditPressed;
+  final Color iconColor;
+
+  const ProfileInfoItem({super.key,
+    required this.icon,
+    required this.label,
+    required this.value,
+    this.showEditIcon = false,
+    this.onEditPressed,
+    required this.iconColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 3,
+          child: Row(
+            children: [
+              Icon(icon, color: iconColor), // Gunakan variabel warna ikon 
+              SizedBox(width: 8),
+              Text(
+                label,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Text(': $value', style: TextStyle(fontSize: 18)),
+          ),
+        if(showEditIcon) InkWell(onTap: onEditPressed, child: Icon(Icons.edit)),
+      ],
     );
   }
 }
